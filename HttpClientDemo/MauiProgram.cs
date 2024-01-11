@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using CommunityToolkit.Mvvm;
+using HttpClientDemo.API;
 
 namespace HttpClientDemo;
 
@@ -18,6 +20,11 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+		builder.Services.AddSingleton(typeof(MainPage));
+		builder.Services.AddSingleton(typeof(MainPageViewModel));
+
+		builder.Services.AddSingleton(typeof(DummyClient));
 
 		return builder.Build();
 	}
